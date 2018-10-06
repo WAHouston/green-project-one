@@ -1,0 +1,2 @@
+var marvelAPIkey = ff8242bbf7cc8761ee3412c2ccb1d78f
+var marvelHash = bbad7eb23c369f874011714ae1cf999b
