@@ -1,14 +1,167 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Comics</title>
+    <!--Link to Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <!--Link to CSS-->
+    <link rel="stylesheet" href="xxx.css">
+
+    <!--Link to JavaScript-->
+    <script src="xxx"></script>
+
+    <!--Link to jQury-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+
 </head>
+
 <body>
+    <div class="container">
+        <!--Jumbotron-->
+        <div class="jumbotron" style="background-color:yellow; color: white">
+            <h1 class="text-center">I am the Title</h1>
+            <h3 class="text-center">I am the sub-description</h3>
+        </div>
+
+        <!--start of row for the search, videos and data display-->
+        <div class="row">
+            <!--Search Area-->
+            <div class="col-sm-12">
+                <form>
+                    <div class="seach-term">
+                        <label for="Search-input">Search Term:</label><br>
+                        <input type="text" placeholder="superman" id="Search-input">
+                        <!--submit click area-->
+                        <input id="add-input" type="submit" value="Search">
+                    </div>
+                </form>
+            </div>
+
+            <!--place for the intial intro video-->
+            <div class="col-md-12" id="inital-video-div">
+                <br>
+                <div id="intro-video">
+                    <h2>initial video </h2>
+                    <br>
+                    <iframe src="" frameborder="0"></iframe>
+                </div>
+            </div>
+            <br>
+
+            <!--place for the data to show-->
+            <div class="col-12 col-md-6">
+                <div id="data-display">
+                   <div id="data-display">I am the region for show the result data from Marvel API</div> 
+                </div>
+            </div>
+
+            <!--Video to show from the youtube-->
+            <div class="col-12 col-md-6">
+               <div id="video-dispaly">I am the video from the youtube API</div> 
+            </div>
+        </div>
+
+<!--end of show data and videos-->
+        <br>
+
+        <!--2nd row for the table of ranking-->
+        <div class="row">
+            <div class="col-12 col-md-12">
+                <div class="card mb-4">
+
+                    <div class="card-header">The Ranking of what is most searched</div>
+
+                    <div class="card-body">
+                        <!--Start the table tag to show the ranking-->
+                        <table class="table table-sm table-hover" id='data-table'>
+
+                            <!--Start setting the table's header-->
+                            <thead>
+                                <!--iterms to include in the header -->
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">optional for numbers of searched</th>
+                                </tr>
+                            </thead>
+
+                            <!--Start of the real input for the table body-->
+                            <tbody>
+                                <!--for the first row of data. note copy as much to display more data-->
+                                <tr>
+                                    <td>1</td>
+                                    <td>jp</td>
+                                    <td>23</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>sf</td>
+                                    <td>18</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>kk</td>
+                                    <td>15</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>ff</td>
+                                    <td>14</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>wr</td>
+                                    <td>1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--End of the ranking-->
+
+        <!--row for the footer-->
+        <div class="row">
+            <footer class="col-12">
+                <p class="text-white bg-dark" style="padding-top:10px;text-align:center; height:40px;width: 100%;">
+                    Copyright &copy;</p>
+            </footer>
+        </div>
+    </div>
+    <!--end of the container-->
+
+    <!--some javaScript for id connection-->
+    <script type="text/javascript">
+
+    // for the submit button whnen clicked 
+    $("#add-input").on("click",function(event){
+        evnet.preventDefault();
+        //remove the first introduction video
+        $("#intro-video").remove()
+    })
     
+    //variable declaration for the matching ids 
+    //in line 42 this one is for capture the user input in the search box 
+   var userInput= $("#search-input").val().trim();
+
+//in line 62 this id is in a div for show the results got from the marvael API in the HTML 
+   var characterInfo=$("#data-display");
+
+//in line 69 this id is in a div for show the videos got from the youtube API in HTML
+    var characterVideo=$("#video-display");
+// the table body in start in line 98 and I created several rows to show the rank
+    </script>
 </body>
+
 </html>
