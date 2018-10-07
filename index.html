@@ -22,7 +22,8 @@
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
 
-    <!--Link-->
+   <!--Link to the new technology css doodle-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/css-doodle/0.4.9/css-doodle.min.js"></script>
 </head>
 
 <body>
@@ -57,7 +58,7 @@
                 </div>
             </div>
             <br>
-
+            <div class="hide">
             <!--place for the data to show-->
             <div class="col-12 col-md-6">
                 <div id="data-display">
@@ -70,10 +71,10 @@
                <div id="video-dispaly">I am the video from the youtube API</div> 
             </div>
         </div>
-
+    </div>
 <!--end of show data and videos-->
         <br>
-
+      <div class="hide">
         <!--2nd row for the table of ranking-->
         <div class="row">
             <div class="col-12 col-md-12">
@@ -131,7 +132,7 @@
 
         </div>
         <!--End of the ranking-->
-
+    </div>
         <!--row for the footer-->
         <div class="row">
             <footer class="col-12">
@@ -141,28 +142,6 @@
         </div>
     </div>
     <!--end of the container-->
-
-    <!--some javaScript for id connection-->
-    <script type="text/javascript">
-
-    // for the submit button whnen clicked 
-    $("#add-input").on("click",function(event){
-        evnet.preventDefault();
-        //remove the first introduction video
-        $("#intro-video").remove()
-    })
-    
-    //variable declaration for the matching ids 
-    //in line 42 this one is for capture the user input in the search box 
-   var userInput= $("#search-input").val().trim();
-
-//in line 62 this id is in a div for show the results got from the marvael API in the HTML 
-   var characterInfo=$("#data-display");
-
-//in line 69 this id is in a div for show the videos got from the youtube API in HTML
-    var characterVideo=$("#video-display");
-// the table body in start in line 98 and I created several rows to show the rank
-    </script>
 </body>
 
 </html>
