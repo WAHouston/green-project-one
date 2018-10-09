@@ -12,8 +12,7 @@
     <!--Link to CSS-->
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!--Link to JavaScript-->
-    <script src="assets/javascript/app.js"></script>
+   
 
     <!--Link to jQury-->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -27,7 +26,28 @@
 </head>
 
 <body>
-    <div class="container">
+    <!--code for css doodle-->
+        <css-doodle>
+                :doodle {
+                  @grid: 20 / 100vmax;
+                }
+              
+                @shape: star;
+                background: hsla(0,0%,100%,@rand(0,1));
+                transform:
+                  scale(@rand(0.1, 0.35))  translate(
+                    @rand(-500%, 500%), @rand(-1000%, 500%)
+                  );
+                  transition: opacity @rand(0s, 3s) linear @rand(0s, 9s);
+                  opacity: @rand(0.2,1);-->
+               animation: twinkle 2s infinite
+                  @keyframes twinkle{
+                    100%{
+                    opacity : 0;
+                    }
+                  } 
+              </css-doodle>
+    <div class="container" id="wrapper">
         <!--Jumbotron-->
         <div class="jumbotron" style="background-color:yellow; color: white">
             <h1 class="text-center">I am the Title</h1>
@@ -52,7 +72,7 @@
             <div class="col-md-12" id="inital-video-div">
                 <br>
                 <div id="intro-video" >
-                    <h2 id="initial-title">initial video </h2>
+                    <h2 id="initial-title"style="text-align:center">initial video </h2>
                     <br>
                     <iframe src="" frameborder="0"></iframe>
                 </div>
@@ -142,6 +162,8 @@
         </div>
     </div>
     <!--end of the container-->
+     <!--Link to JavaScript-->
+     <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>

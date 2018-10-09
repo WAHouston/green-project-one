@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    background: black;
+    position: relative;/*required for set up sticky footer*/
+    overflow: scroll;
+  }
+  
+  .doodle {
+  overflow: scroll;
+  }
+  /* To hide the data and rankiing for the inital stage
+  .hide{
+      display: none;
+  }*/
+
+  /*Positon the entire container */
+  #wrapper{
+      position: absolute;
+      top: 10px;
+      left:60px;
+      right:60px;
+  }
+  label,h2{
+      color:red;
+  }
+  /*To make a sticky footer */
+  footer p{
+      position:fixed;
+      bottom: 0;
+      left:0;
+      height: 50px;
+      margin-bottom: 0;
+  }
