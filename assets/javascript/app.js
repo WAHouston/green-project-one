@@ -22,7 +22,7 @@ $("#add-input").on("click",function(event){
 //in line 71 this id is in a div for show the videos got from the youtube API in HTML
 //var characterVideo=$("#video-display");
 // the table body in start in line 100 in html and I created several rows and put some data to show the rank
-var hero = "Antman"
+var hero = ""
 
 var marvelURL = "https://cors-anywhere.herokuapp.com/https://gateway.marvel.com/v1/public/characters?name=" + hero + "&ts=1&apikey=" + marvelAPIkey + "&hash=" + marvelAPIhash
 

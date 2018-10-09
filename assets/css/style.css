@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    background: black;
+    position: relative;/*required for set up sticky footer*/
+    overflow: scroll; /*for the content in the contianer/wrapper to scroll*/
+  }
+  /*for the content in the contianer/wrapper to scroll in the css doodle*/
+  .doodle {
+  overflow: scroll;
+  }
+  /* To hide the data and rankiing for the inital stage
+  .hide{
+      display: none;
+  }*/
+
+  /*Positon the entire container to make it show on the top of the page */
+  #wrapper{
+      font-family:Arial, Helvetica, sans-serif;
+      position: absolute;
+      top: 10px;
+      left:60px;
+      right:60px;
+  }
+  /*Optional:Try to set the background image for the jumbotroon*/
+  /*.jumbotron {
+    background-image: url(../../Night-sky.jpg);
+    background-size: cover;
+    height: 100%;
+    width:100%;
+}*/
+
+  /*Set the text color for the search box and the title of the inital video*/
+  label,h2{
+      color:red;
+  }
+  label {
+      font-weight: bolder;
+  }
+  /*Set the color for the result of search maybe also the name of the resulting video */
+  .col-md-6 {
+      color: orange;
+  }
+  /*To make a sticky footer */
+  footer p{
+      position:fixed;
+      bottom: 0;
+      left:0;
+      height: 50px;
+      margin-bottom: 0;
+  }
