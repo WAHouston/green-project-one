@@ -39,7 +39,7 @@
                     @rand(-500%, 500%), @rand(-1000%, 500%)
                   );
                   transition: opacity @rand(0s, 3s) linear @rand(0s, 9s);
-                  opacity: @rand(0.2,1);-->
+                  opacity: @rand(0.2,1);
                animation: twinkle 2s infinite
                   @keyframes twinkle{
                     100%{
@@ -78,16 +78,19 @@
                 </div>
             </div>
             <br>
-            <div class="hide">
+          
             <!--place for the data to show-->
             <div class="col-12 col-md-6">
+                    <div class="hide">
                 <div id="data-display">
                    <div id="data-display">I am the region for show the result data from Marvel API</div> 
                 </div>
             </div>
-
+        </div>
+          
             <!--Video to show from the youtube-->
             <div class="col-12 col-md-6">
+                    <div class="hide">
                <div id="video-dispaly">I am the video from the youtube API</div> 
             </div>
         </div>
