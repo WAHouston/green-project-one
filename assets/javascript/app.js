@@ -1,5 +1,16 @@
 //some javaScript for id connection
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBllgVRpgVUZNsKzeut0B9HWx0BCjvAvew",
+    authDomain: "green-project-one.firebaseapp.com",
+    databaseURL: "https://green-project-one.firebaseio.com",
+    projectId: "green-project-one",
+    storageBucket: "green-project-one.appspot.com",
+    messagingSenderId: "14534397184"
+  };
+  firebase.initializeApp(config);
 
+  var database = firebase.database()
 // for the search button whnen clicked 
 //$("#add-input").on("click",function(event){
     //prevent refresh the page
@@ -50,10 +61,23 @@ $("#add-input").on("click", function(event){
             for (var i = 0; i < series.length; i++) {
                 $("#data-display").append(series[i].name)
             }
+            database.ref().once("value", function(snapshot){
+                for (var key in snapshot.val()){
+                    if (snapshot.val()[key].hero === hero){
+                        database.ref(key).update({
+                            searchNumber: (snapshot.val()[key].searchNumber + 1)
+                        })
+                        return
+                    }
+                }
+                database.ref().push({
+                    hero: hero,
+                    searchNumber: 1
+                })
+            })    
         } else {
             $("#data-display").append("<p>Character not found.</p>")
         }
         
       });
 })
-
