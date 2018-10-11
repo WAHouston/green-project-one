@@ -48,3 +48,14 @@ body {
       height: 50px;
       margin-bottom: 0;
   }
+
+
+  /*connection for the ids made in the js file
+  #heroName = name of the searched hero  from api object
+  = image from the api object
+  #description = summary of the charcter
+  #series = list of the product this hero shown
+  */
+  #thumbnail{
+      margin-bottom: 2%;
+  }
