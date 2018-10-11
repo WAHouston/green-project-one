@@ -36,7 +36,7 @@
 $("#add-input").on("click", function(event){
     event.preventDefault()
     $("#data-display").empty()
-    var hero = $("#Search-input").val().trim()
+    var hero = $("#Search-input").val().trim().toLowerCase()
     $("#Search-input").val("")
     var marvelURL = "https://cors-anywhere.herokuapp.com/https://gateway.marvel.com/v1/public/characters?name=" + hero + "&ts=1&apikey=" + marvelAPIkey + "&hash=" + marvelAPIhash
     
@@ -54,7 +54,6 @@ $("#add-input").on("click", function(event){
       $.ajax(settings).done(function (response) {
         console.log(response);
         if (response.data.count === 1) {
-            //append the name to a different id so that we can center it
             $("<p>" + response.data.results[0].name + "</p>").attr("id", "heroName").appendTo("#data-display")
             $("<img src=" + response.data.results[0].thumbnail.path + "." + response.data.results[0].thumbnail.extension + " alt=" + hero + "></img>").attr("id", "thumbnail").appendTo("#data-display")
             $("<p>" + response.data.results[0].description + "</p>").attr("id", "description").appendTo("#data-display")
@@ -77,6 +76,7 @@ $("#add-input").on("click", function(event){
                     searchNumber: 1
                 })
             })    
+            //Use response.data.results[0].name for display NOT "hero"!
         } else {
             $("#data-display").append("<p>Character not found.</p>")
         }
