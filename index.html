@@ -105,6 +105,7 @@
         <!--2nd row for the table of ranking-->
         <div class="row">
             <div class="col-12 col-md-12">
+                <div id="graph-display">I am the here to display the bar garph while button with id switch was click</div>
                 <div class="card mb-4">
 
                     <div class="card-header">The Ranking of what is most searched</div>
@@ -155,6 +156,7 @@
                         </table>
                     </div>
                 </div>
+                <button id="switch" type="button" class="btn btn-info text-center">Click me to show the graph and hide the table</button>
             </div>
 
         </div>
@@ -171,6 +173,21 @@
     <!--end of the container-->
      <!--Link to JavaScript-->
      <script src="assets/javascript/app.js"></script>
+
+     <!-- connection for the button in the javascript to hide the card of the table -->
+     <script>
+         var toHide=false;
+         $("#switch").on("cilick",function(){
+             if(!toHide){
+             $(".card").hide();
+             toHide=true;
+             }
+             else{
+                 $("#graph-display").hide();
+                 $(".card").show();
+             }
+         })
+     </script>
 </body>
 
 </html>
