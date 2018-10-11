@@ -33,6 +33,7 @@
 //in line 71 this id is in a div for show the videos got from the youtube API in HTML
 //var characterVideo=$("#video-display");
 // the table body in start in line 100 in html and I created several rows and put some data to show the rank
+
 $("#add-input").on("click", function(event){
     event.preventDefault()
     $("#data-display").empty()
