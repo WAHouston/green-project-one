@@ -12,6 +12,33 @@
 
   var database = firebase.database()
 
+var queryURL
+
+var video = function(){
+
+    var ytsettings = {
+        "async": true,
+        "crossDomain": true,
+        "url": queryURL,
+        "method": "GET",
+        "headers": {
+            "Cache-Control": "no-cache",
+            "Postman-Token": "8a23a9ae-9f3f-4dbd-b2b4-94a85af2f577"
+        }
+    }
+        
+    $.ajax(ytsettings).done(function (response) {
+        console.log(response);
+
+        var youtubeID = response.items[0].id.videoId
+
+        $('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + youtubeID + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>').appendTo("#video-display")
+    })
+
+
+}
+
+
 $("#add-input").on("click", function(event){
     event.preventDefault()
     $("#slideshow").remove()//remove the slide show
@@ -20,6 +47,7 @@ $("#add-input").on("click", function(event){
     var hero = $("#Search-input").val().trim().toLowerCase()
     $("#Search-input").val("")
     var marvelURL = "https://cors-anywhere.herokuapp.com/https://gateway.marvel.com/v1/public/characters?name=" + hero + "&ts=1&apikey=" + marvelAPIkey + "&hash=" + marvelAPIhash
+    queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + hero + "&key=" + youtubeAPIkey + "&order=relevance&safesearch=moderate&type=video" 
     
     var msettings = {
         "async": true,
@@ -76,3 +104,4 @@ setInterval(function() {
     .end()
     .appendTo('#slideshow');
 }, 3000);*/
+
