@@ -33,14 +33,44 @@
 //in line 71 this id is in a div for show the videos got from the youtube API in HTML
 //var characterVideo=$("#video-display");
 // the table body in start in line 100 in html and I created several rows and put some data to show the rank
+
+var queryURL
+
+var video = function(){
+
+    var ytsettings = {
+        "async": true,
+        "crossDomain": true,
+        "url": queryURL,
+        "method": "GET",
+        "headers": {
+            "Cache-Control": "no-cache",
+            "Postman-Token": "8a23a9ae-9f3f-4dbd-b2b4-94a85af2f577"
+        }
+    }
+        
+    $.ajax(ytsettings).done(function (response) {
+        console.log(response);
+
+        var youtubeID = response.items[0].id.videoId
+
+        $('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + youtubeID + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>').appendTo("#video-display")
+    })
+
+
+}
+
+
 $("#add-input").on("click", function(event){
     event.preventDefault()
     $("#data-display").empty()
     var hero = $("#Search-input").val().trim()
+    
     $("#Search-input").val("")
     var marvelURL = "https://cors-anywhere.herokuapp.com/https://gateway.marvel.com/v1/public/characters?name=" + hero + "&ts=1&apikey=" + marvelAPIkey + "&hash=" + marvelAPIhash
+    queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + hero + "&key=" + youtubeAPIkey + "&order=relevance&safesearch=moderate&type=video" 
     
-    var settings = {
+    var msettings = {
         "async": true,
         "crossDomain": true,
         "url": marvelURL,
@@ -51,9 +81,10 @@ $("#add-input").on("click", function(event){
         }
       }
       
-      $.ajax(settings).done(function (response) {
+      $.ajax(msettings).done(function (response) {
         console.log(response);
         if (response.data.count === 1) {
+            video()
             $("#data-display").append(response.data.results[0].name)
             $("#data-display").append("<img src=" + response.data.results[0].thumbnail.path + "." + response.data.results[0].thumbnail.extension + " alt=" + hero + "></img>")
             $("#data-display").append(response.data.results[0].description)
