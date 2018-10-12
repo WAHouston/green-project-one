@@ -41,7 +41,7 @@ $("#add-input").on("click", function(event){
     $("#Search-input").val("")
     var marvelURL = "https://cors-anywhere.herokuapp.com/https://gateway.marvel.com/v1/public/characters?name=" + hero + "&ts=1&apikey=" + marvelAPIkey + "&hash=" + marvelAPIhash
     
-    var settings = {
+    var msettings = {
         "async": true,
         "crossDomain": true,
         "url": marvelURL,
@@ -52,7 +52,7 @@ $("#add-input").on("click", function(event){
         }
       }
       
-      $.ajax(settings).done(function (response) {
+      $.ajax(msettings).done(function (response) {
         console.log(response);
         if (response.data.count === 1) {
             $("<p>" + response.data.results[0].name + "</p>").attr("id", "heroName").appendTo("#data-display")
@@ -77,7 +77,7 @@ $("#add-input").on("click", function(event){
                     searchNumber: 1
                 })
             })    
-            $('<iframe width="560" height="315" src="https://www.youtube.com/embed/uzOFQjy6y5Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>').appendTo("#video-display")
+            $('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + youtubeID + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>').appendTo("#video-display")
             //Use response.data.results[0].name for display NOT "hero"!
         } else {
             $("#data-display").append("<p>Character not found.</p>")
