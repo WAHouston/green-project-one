@@ -21,6 +21,8 @@
 
    <!--Link to the new technology css doodle-->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/css-doodle/0.4.9/css-doodle.min.js"></script>
+  <!--Link to make the canvasjs for make the graph-->
+   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </head>
 
 <body>
@@ -29,7 +31,6 @@
                 :doodle {
                   @grid: 20 / 100vmax;
                 }
-              
                 @shape: star;
                 background: hsla(0,0%,100%,@rand(0,1));
                 transform:
@@ -78,7 +79,7 @@
             <br>
           
             <!--place for the data to show-->
-            <div class="col-12 col-md-6">
+            <div class="col-md-6">
                     <div class="hide">
                 <div>
                    <div id="data-display">I am the region for show the result data from Marvel API</div> 
@@ -87,12 +88,9 @@
         </div>
           
             <!--Video to show from the youtube-->
-            <div class="col-12 col-md-6">
+            <div class="col-md-6">
                     <div class="hide">
-               <div id="video-display">I am the video from the youtube API</div> 
-            <!--iframe needed to hold the video-->
-            <!---->
-            
+                        <div id="video-display">I am the video from the youtube API</div> 
             </div>
         </div>
     </div>
@@ -101,7 +99,8 @@
       <div class="hide">
         <!--2nd row for the table of ranking-->
         <div class="row">
-            <div class="col-12 col-md-12">
+            <div class="col-md-12">
+                <div id="chart-container">I am the here to display the bar garph while button with id switch was click</div>
                 <div class="card mb-4">
 
                     <div class="card-header">The Ranking of what is most searched</div>
@@ -152,6 +151,7 @@
                         </table>
                     </div>
                 </div>
+                <button id="switch" type="button" class="btn btn-info text-center">Click me to show the graph and hide the table</button>
             </div>
 
         </div>
@@ -166,13 +166,34 @@
         </div>
     </div>
     <!--end of the container-->
+   
+     <!-- connection for the button in the javascript to hide the card of the table -->
+  
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
 
     <!--Link to JavaScript-->
     <script src="assets/javascript/app.js"></script>
 
- 
+ <script>
+
+//new  code made to put into the javascript
+/*    the #switch id is for the button to switch the table and graph
+the  .card is the entire class of the table
+the  #chart-container is the id for show the graph
+ var toHide=false;
+        $("#switch").on("cilick",function(){
+            if(!toHide){
+            $(".card").hide();
+            toHide=true;
+            }
+            else{
+                $("#chart-container").hide();
+                $(".card").show();
+            }
+        })
+*/ 
+ </script>
 </body>
 
 </html>

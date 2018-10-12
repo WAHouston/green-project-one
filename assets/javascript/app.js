@@ -90,7 +90,7 @@ $("#add-input").on("click", function(event){
             $("#data-display").append(response.data.results[0].description)
             var series = response.data.results[0].series.items
             for (var i = 0; i < series.length; i++) {
-                $("#data-display").append(series[i].name)
+                $("<li>" + series[i].name + "</li>").appendTo("#series")
             }
             database.ref().once("value", function(snapshot){
                 for (var key in snapshot.val()){
