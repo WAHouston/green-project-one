@@ -77,6 +77,7 @@ $("#add-input").on("click", function(event){
                     searchNumber: 1
                 })
             })    
+            $('<iframe width="560" height="315" src="https://www.youtube.com/embed/uzOFQjy6y5Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>').appendTo("#video-display")
             //Use response.data.results[0].name for display NOT "hero"!
         } else {
             $("#data-display").append("<p>Character not found.</p>")
@@ -84,3 +85,5 @@ $("#add-input").on("click", function(event){
         
       });
 })
+
+
