@@ -37,11 +37,15 @@ var video = function(){
 
 
 }
+<<<<<<< HEAD
 
 var rankings = function(){
     
 
 }
+=======
+    
+>>>>>>> 6aa7a2f4e1d1cf2fe58a1438ab91403de5d8464d
 
 $("#add-input").on("click", function(event){
     event.preventDefault()
@@ -99,11 +103,20 @@ $("#add-input").on("click", function(event){
       });
 })
 
+<<<<<<< HEAD
 database.ref().once("value", function(){
     $("tbody").empty()
     database.ref().orderByChild("searchNumber").on("value", function(snapshot){
         for (var key in snapshot.val()){
             $('tbody').append('<tr><td>' + snapshot.val()[key].hero + '</td><td>' + snapshot.val()[key].searchNumber + '</td></tr>')
+=======
+database.ref().on("value", function(){
+    database.ref().orderByChild("searchNumber").once("value", function(snapshot){
+        $("tbody").empty()
+        var rank = 1
+        for (var key in snapshot.val()){
+            $('tbody').append('<tr><td>' + (rank++) + '</td><td>' + snapshot.val()[key].hero + '</td><td>' + snapshot.val()[key].searchNumber + '</td></tr>')
+>>>>>>> 6aa7a2f4e1d1cf2fe58a1438ab91403de5d8464d
         }
     })
 })
