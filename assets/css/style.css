@@ -36,6 +36,33 @@ body {
   label {
       font-weight: bolder;
   }
+  /*Section for the slideshow*/
+  #slideshow{
+      position: relative;
+      left:10%;
+  }
+  #slide-image-1{
+      width:400px;
+      height: 400px;
+    width: 70%;
+
+  }
+  #slide-image-2 {
+width:400px;
+height: 400px;
+width:70%;
+
+  }
+  #slide-text {
+      width:500px;
+      height: 300px;
+      width: 70%;
+      font-size:30px;
+      color: white;
+      background: green;
+      border: 1px solid white;
+
+  }
   /*Set the color for the result of search maybe also the name of the resulting video */
   .col-md-6 {
       color: orange;
