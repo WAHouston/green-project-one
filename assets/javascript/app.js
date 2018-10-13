@@ -37,11 +37,7 @@ var video = function(){
 
 
 }
-
-var rankings = function(){
     
-
-}
 
 $("#add-input").on("click", function(event){
     event.preventDefault()
@@ -73,7 +69,6 @@ $("#add-input").on("click", function(event){
             $("<img src=" + response.data.results[0].thumbnail.path + "." + response.data.results[0].thumbnail.extension + " alt=" + hero + "></img>").addClass("img-fluid").attr("id", "thumbnail").appendTo("#data-display")
             $("<p>" + response.data.results[0].description + "</p>").attr("id", "description").appendTo("#data-display")
             $("<ul>").attr("id", "series").appendTo("#data-display")
-            rankings()
             var series = response.data.results[0].series.items
             for (var i = 0; i < series.length; i++) {
                 $("<li>" + series[i].name + "</li>").appendTo("#series")
@@ -99,11 +94,12 @@ $("#add-input").on("click", function(event){
       });
 })
 
-database.ref().once("value", function(){
-    $("tbody").empty()
-    database.ref().orderByChild("searchNumber").on("value", function(snapshot){
+database.ref().on("value", function(){
+    database.ref().orderByChild("searchNumber").once("value", function(snapshot){
+        $("tbody").empty()
+        var rank = 1
         for (var key in snapshot.val()){
-            $('tbody').append('<tr><td>' + snapshot.val()[key].hero + '</td><td>' + snapshot.val()[key].searchNumber + '</td></tr>')
+            $('tbody').append('<tr><td>' + (rank++) + '</td><td>' + snapshot.val()[key].hero + '</td><td>' + snapshot.val()[key].searchNumber + '</td></tr>')
         }
     })
 })
