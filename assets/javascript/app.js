@@ -44,10 +44,11 @@ $("#add-input").on("click", function(event){
     $("#slideshow").remove()//remove the slide show
     $(".hide").show()// show the data , video, and graph
     $("#data-display").empty()
+    $("#video-display").empty()
     var hero = $("#Search-input").val().trim().toLowerCase()
     $("#Search-input").val("")
     var marvelURL = "https://cors-anywhere.herokuapp.com/https://gateway.marvel.com/v1/public/characters?name=" + hero + "&ts=1&apikey=" + marvelAPIkey + "&hash=" + marvelAPIhash
-    queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" + hero + "&key=" + youtubeAPIkey + "&order=relevance&safesearch=moderate&type=video" 
+    queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=Variant%20Comics%20" + hero + "&key=" + youtubeAPIkey + "&order=relevance&safesearch=moderate&type=video" 
     
     var msettings = {
         "async": true,
@@ -63,6 +64,7 @@ $("#add-input").on("click", function(event){
       $.ajax(msettings).done(function (response) {
         console.log(response);
         if (response.data.count === 1) {
+            video()
             $("<p>" + response.data.results[0].name + "</p>").attr("id", "heroName").appendTo("#data-display")
             $("<img src=" + response.data.results[0].thumbnail.path + "." + response.data.results[0].thumbnail.extension + " alt=" + hero + "></img>").addClass("img-fluid").attr("id", "thumbnail").appendTo("#data-display")
             $("<p>" + response.data.results[0].description + "</p>").attr("id", "description").appendTo("#data-display")
@@ -85,8 +87,6 @@ $("#add-input").on("click", function(event){
                     searchNumber: 1
                 })
             })    
-            $('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + youtubeID + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>').appendTo("#video-display")
-            //Use response.data.results[0].name for display NOT "hero"!
         } else {
             $("#data-display").append("<p>Character not found.</p>")
         }
