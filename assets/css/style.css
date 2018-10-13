@@ -56,6 +56,9 @@ body {
   #description = summary of the charcter
   #series = list of the product this hero shown
   */
-  #thumbnail{
+  /*Line up the images and text of the marvel api results for the image I add a class in app.js file to make it responsive*/
+  #thumbnail,#description,#series{
       margin-bottom: 2%;
+      width: 80%;
+
   }

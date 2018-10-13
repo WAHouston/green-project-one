@@ -11,28 +11,6 @@
   firebase.initializeApp(config);
 
   var database = firebase.database()
-// for the search button whnen clicked 
-//$("#add-input").on("click",function(event){
-    //prevent refresh the page
-    //event.preventDefault();
-    /*I made a class in html called hide. it will hide the video and ranking at
-     intial with the css display none . right now just to embed this code to show 
-     the data and video when user hites search.
-   //$(".hide").show()*/
-    //remove the  inital introduction video with id  intro-video
-    //$("#intro-video").remove()
-//})
-
-//variable declaration for the matching ids 
-//in line 44 this one is for capture the user input in the search box 
-//var userInput= $("#search-input").val().trim();
-
-//in line 64 this id is in a div for show the results got from the marvael API in the HTML 
-//var characterInfo=$("#data-display");
-
-//in line 71 this id is in a div for show the videos got from the youtube API in HTML
-//var characterVideo=$("#video-display");
-// the table body in start in line 100 in html and I created several rows and put some data to show the rank
 
 var queryURL
 
@@ -63,6 +41,8 @@ var video = function(){
 
 $("#add-input").on("click", function(event){
     event.preventDefault()
+    $("#slideshow").remove()//remove the slide show
+    $(".hide").show()// show the data , video, and graph
     $("#data-display").empty()
     var hero = $("#Search-input").val().trim().toLowerCase()
     $("#Search-input").val("")
@@ -83,9 +63,8 @@ $("#add-input").on("click", function(event){
       $.ajax(msettings).done(function (response) {
         console.log(response);
         if (response.data.count === 1) {
-            video()
             $("<p>" + response.data.results[0].name + "</p>").attr("id", "heroName").appendTo("#data-display")
-            $("<img src=" + response.data.results[0].thumbnail.path + "." + response.data.results[0].thumbnail.extension + " alt=" + hero + "></img>").attr("id", "thumbnail").appendTo("#data-display")
+            $("<img src=" + response.data.results[0].thumbnail.path + "." + response.data.results[0].thumbnail.extension + " alt=" + hero + "></img>").addClass("img-fluid").attr("id", "thumbnail").appendTo("#data-display")
             $("<p>" + response.data.results[0].description + "</p>").attr("id", "description").appendTo("#data-display")
             $("<ul>").attr("id", "series").appendTo("#data-display")
             var series = response.data.results[0].series.items
@@ -106,6 +85,7 @@ $("#add-input").on("click", function(event){
                     searchNumber: 1
                 })
             })    
+            $('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + youtubeID + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>').appendTo("#video-display")
             //Use response.data.results[0].name for display NOT "hero"!
         } else {
             $("#data-display").append("<p>Character not found.</p>")
@@ -114,4 +94,14 @@ $("#add-input").on("click", function(event){
       });
 })
 
+//Here is the javascript for the slides 
+/*$("#slideshow > div:gt(0)").hide();
+setInterval(function() {
+  $('#slideshow > div:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#slideshow');
+}, 3000);*/
 
