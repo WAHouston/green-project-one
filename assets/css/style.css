@@ -67,6 +67,11 @@ width:70%;
   .col-md-6 {
       color: orange;
   }
+  /*Position the video to make it could line up with image*/
+  #video-display {
+      position: relative;
+      top: 30px;
+  }
   /*To make a sticky footer */
   footer p{
       position:fixed;
@@ -86,6 +91,6 @@ width:70%;
   /*Line up the images and text of the marvel api results for the image I add a class in app.js file to make it responsive*/
   #thumbnail,#description,#series{
       margin-bottom: 2%;
-      width: 80%;
+      width: 90%;
 
   }
