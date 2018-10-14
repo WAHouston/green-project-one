@@ -67,7 +67,7 @@ $("#add-input").on("click", function(event){
             $("<p>" + response.data.results[0].name + "</p>").attr("id", "heroName").appendTo("#data-display")
             $("<img src=" + response.data.results[0].thumbnail.path + "." + response.data.results[0].thumbnail.extension + " alt=" + hero + "></img>").addClass("img-fluid").attr("id", "thumbnail").appendTo("#data-display")
             $("<p>" + response.data.results[0].description + "</p>").attr("id", "description").appendTo("#data-display")
-            $("<p>Check out these comic series:</p>").appendTo
+            $("<p>Check out these comic series:</p>").appendTo("#data-display")
             $("<ul>").attr("id", "series").appendTo("#data-display")
             var series = response.data.results[0].series.items
             for (var i = 0; i < series.length; i++) {
