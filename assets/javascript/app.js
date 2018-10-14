@@ -37,15 +37,6 @@ var video = function(){
 
 
 }
-<<<<<<< HEAD
-
-var rankings = function(){
-    
-
-}
-=======
-    
->>>>>>> 6aa7a2f4e1d1cf2fe58a1438ab91403de5d8464d
 
 $("#add-input").on("click", function(event){
     event.preventDefault()
@@ -76,15 +67,15 @@ $("#add-input").on("click", function(event){
             $("<p>" + response.data.results[0].name + "</p>").attr("id", "heroName").appendTo("#data-display")
             $("<img src=" + response.data.results[0].thumbnail.path + "." + response.data.results[0].thumbnail.extension + " alt=" + hero + "></img>").addClass("img-fluid").attr("id", "thumbnail").appendTo("#data-display")
             $("<p>" + response.data.results[0].description + "</p>").attr("id", "description").appendTo("#data-display")
+            $("<p>Check out these comic series:</p>").appendTo
             $("<ul>").attr("id", "series").appendTo("#data-display")
-            rankings()
             var series = response.data.results[0].series.items
             for (var i = 0; i < series.length; i++) {
                 $("<li>" + series[i].name + "</li>").appendTo("#series")
             }
             database.ref().once("value", function(snapshot){
                 for (var key in snapshot.val()){
-                    if (snapshot.val()[key].hero === hero){
+                    if (snapshot.val()[key].hero === response.data.results[0].name){
                         database.ref(key).update({
                             searchNumber: (snapshot.val()[key].searchNumber + 1)
                         })
@@ -92,7 +83,7 @@ $("#add-input").on("click", function(event){
                     }
                 }
                 database.ref().push({
-                    hero: hero,
+                    hero: response.data.results[0].name,
                     searchNumber: 1
                 })
             })    
@@ -103,20 +94,23 @@ $("#add-input").on("click", function(event){
       });
 })
 
-<<<<<<< HEAD
-database.ref().once("value", function(){
-    $("tbody").empty()
-    database.ref().orderByChild("searchNumber").on("value", function(snapshot){
-        for (var key in snapshot.val()){
-            $('tbody').append('<tr><td>' + snapshot.val()[key].hero + '</td><td>' + snapshot.val()[key].searchNumber + '</td></tr>')
-=======
 database.ref().on("value", function(){
-    database.ref().orderByChild("searchNumber").once("value", function(snapshot){
+    database.ref().once("value", function(snapshot){
         $("tbody").empty()
         var rank = 1
-        for (var key in snapshot.val()){
-            $('tbody').append('<tr><td>' + (rank++) + '</td><td>' + snapshot.val()[key].hero + '</td><td>' + snapshot.val()[key].searchNumber + '</td></tr>')
->>>>>>> 6aa7a2f4e1d1cf2fe58a1438ab91403de5d8464d
+        var rankingsArray = [];
+        var snap = snapshot.val()
+        while (rankingsArray.length < Object.keys(snap).length) {
+           var tempNum = 0;
+           var tempKey;
+           for(var key in snap) {
+               if (snap[key].searchNumber > tempNum && rankingsArray.indexOf(snap[key]) === -1) {
+                   tempNum = snap[key].searchNumber;
+                   tempKey = key;
+               }
+           }
+           rankingsArray.push(snap[tempKey]);
+           $('tbody').append('<tr><td>' + (rank++) + '</td><td>' + snap[tempKey].hero + '</td><td>' + snap[tempKey].searchNumber + '</td></tr>')
         }
     })
 })
