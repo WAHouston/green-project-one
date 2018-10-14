@@ -1,96 +1,97 @@
 body {
     margin: 0;
     background: black;
-    position: relative;/*required for set up sticky footer*/
-    overflow: scroll; /*for the content in the contianer/wrapper to scroll*/
-  }
-  /*for the content in the contianer/wrapper to scroll in the css doodle*/
-  .doodle {
-  overflow: scroll;
-  }
-  /* To hide the data and rankiing for the inital stage
-  .hide{
-      display: none;
-  }*/
+    position: relative;
+    /*required for set up sticky footer*/
+    overflow: scroll;
+    /*for the content in the contianer/wrapper to scroll*/
+}
 
-  /*Positon the entire container to make it show on the top of the page */
-  #wrapper{
-      font-family:Arial, Helvetica, sans-serif;
-      position: absolute;
-      top: 10px;
-      left:60px;
-      right:60px;
-  }
-  /*Optional:Try to set the background image for the jumbotroon*/
-  /*.jumbotron {
-    background-image: url(../../Night-sky.jpg);
+/*for the content in the container class to scroll in the css doodle*/
+.doodle {
+    overflow: scroll;
+}
+
+/* To hide the search result from the inital stage*/
+.hide {
+    display: none;
+}
+
+/*Responisve positon the wrapper(entire container) to the page*/
+#wrapper {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/*Set the background image for the jumbotroon*/
+.jumbotron {
+    background-image: url(../images/marvel3.jpg);
     background-size: cover;
+    opacity: 0.8;
     height: 100%;
-    width:100%;
-}*/
+    width: 100%;
+}
 
-  /*Set the text color for the search box and the title of the inital video*/
-  label,h2{
-      color:red;
-  }
-  label {
-      font-weight: bolder;
-  }
-  /*Section for the slideshow*/
-  #slideshow{
-      position: relative;
-      left:10%;
-  }
-  #slide-image-1{
-      width:400px;
-      height: 400px;
-    width: 70%;
+/*Set the text color for the search box*/
+label,
+h2 {
+    color: red;
+}
 
-  }
-  #slide-image-2 {
-width:400px;
-height: 400px;
-width:70%;
+label {
+    font-weight: bolder;
+}
 
-  }
-  #slide-text {
-      width:500px;
-      height: 300px;
-      width: 70%;
-      font-size:30px;
-      color: white;
-      background: green;
-      border: 1px solid white;
+/*Section for the slideshow*/
+#slideshow {
+    position: relative;
+    left: 10%;
+}
 
-  }
-  /*Set the color for the result of search maybe also the name of the resulting video */
-  .col-md-6 {
-      color: orange;
-  }
-  /*Position the video to make it could line up with image*/
-  #video-display {
-      position: relative;
-      top: 30px;
-  }
-  /*To make a sticky footer */
-  footer p{
-      position:fixed;
-      bottom: 0;
-      left:0;
-      height: 50px;
-      margin-bottom: 0;
-  }
+.slide-image {
+    width: 500px;
+    width: 80%;
+    height: 400px;
 
+}
 
-  /*connection for the ids made in the js file
-  #heroName = name of the searched hero  from api object
-  = image from the api object
-  #description = summary of the charcter
-  #series = list of the product this hero shown
-  */
-  /*Line up the images and text of the marvel api results for the image I add a class in app.js file to make it responsive*/
-  #thumbnail,#description,#series{
-      margin-bottom: 2%;
-      width: 90%;
+/*Section for the display of the searching result*/
+/*Set the text color of searching reuslt, also the video's name (if found one) */
+.col-md-6 {
+    color: orange;
+}
 
-  }
+/*Line up the image and text from the searching result using marvel APi*/
+#thumbnail,
+#description,
+#series {
+    margin-bottom: 2%;
+    width: 90%;
+}
+
+/*Set the size of the hero's name and make it appears to the center*/
+#heroName {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 0;
+}
+
+/*Position the video to make it could line up with image*/
+#video-display {
+    position: relative;
+    top: 30px;
+}
+
+/*Section for the footer*/
+/*To make a sticky footer */
+footer p {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    margin-bottom: 0;
+}

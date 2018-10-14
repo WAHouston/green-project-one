@@ -19,47 +19,49 @@
     <!--Link to config.js-->
     <script src="config.js"></script>
 
-   <!--Link to the new technology css doodle-->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/css-doodle/0.4.9/css-doodle.min.js"></script>
-  <!--Link to make the canvasjs for make the graph-->
-   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <!--Link to the new technology css doodle-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/css-doodle/0.4.9/css-doodle.min.js"></script>
+    <!--Link to make the canvasjs for make the graph-->
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </head>
 
 <body>
     <!--code for css doodle-->
-        <css-doodle>
-                :doodle {
-                  @grid: 200 / 200vmax;
-                }
-                @shape: star;
-                background: hsla(0,0%,100%,@rand(0,1));
-                transform:
-                  scale(@rand(0.1, 0.35))  translate(
-                    @rand(-500%, 500%), @rand(-1000%, 500%)
-                  );
-                  transition: opacity @rand(0s, 3s) linear @rand(0s, 9s);
-                  opacity: @rand(0.2,1);
-               animation: twinkle 2s infinite
-                  @keyframes twinkle{
-                    100%{
-                    opacity : 0;
-                    }
-                  } 
-              </css-doodle>
+    <css-doodle>
+        :doodle {
+        @grid: 200x32;
+        width:100vw; height:180vmax;
+        }
+        @shape: star;
+        background: hsla(0,0%,100%,@rand(0,1));
+        transform:
+        scale(@rand(0.1, 0.35)) translate(
+        @rand(-500%, 500%), @rand(-1000%, 500%)
+        );
+        transition: opacity @rand(0s, 3s) linear @rand(0s, 9s);
+        opacity: @rand(0.2,1);
+        animation: twinkle 2s infinite
+        @keyframes twinkle{
+        100%{
+        opacity : 0;
+        }
+        }
+    </css-doodle>
     <div class="container" id="wrapper">
-        <!--Jumbotron-->
-        <div class="jumbotron" style="background-color:yellow; color: red">
-            <h1 class="text-center">Marvel Character Search</h1>
-            <h3 class="text-center">Your Gateway to the Marvel Multiverse</h3>
+        <div class="row">
+            <!--Jumbotron-->
+            <div class="jumbotron" style="color: yellow">
+                <h1 class="text-center">Marvel Character Search</h1>
+                <h3 class="text-center">Your Gateway to the Marvel Multiverse</h3>
+            </div>
         </div>
-
         <!--start of row for the search, videos and data display-->
         <div class="row">
             <!--Search Area-->
             <div class="col-sm-12">
                 <form>
                     <div class="seach-term text-center">
-                        <label for="Search-input">Search Term:</label><br>
+                        <label for="Search-input">Search Character:</label><br>
                         <input type="text" placeholder="Spider-Man" id="Search-input">
                         <!--submit click area-->
                         <input id="add-input" type="submit" value="Search">
@@ -67,82 +69,81 @@
                 </form>
             </div>
 
-            <!--place for the intial intro video-->
+            <!--place for the slideshow-->
             <div class="col-12 col-md-12">
                 <br>
-   <div id="slideshow">
-       <div>
-         <img src= "assets/images/marvel1.jpg">
-       </div>
-       <div>
-         <img src= "assets/images/marvel3.jpg">
-       </div>
-       <div>
-         <img src= "assets/images/marvel4.jpg">
-       </div>
-       <div>
-         <img src="assets/images/marvel6.jpg">
-       </div>
-       <div>
-         <img src="assets/images/marvel8.jpg">
-       </div>
-   </div>
+                <div id="slideshow">
+                    <div>
+                        <img class="slide-image img-fluid" src="assets/images/marvel1.jpg">
+                    </div>
+                    <div>
+                        <img class="slide-image img-fluid" src="assets/images/marvel3.jpg">
+                    </div>
+                    <div>
+                        <img class="slide-image img-fluid" src="assets/images/marvel4.jpg">
+                    </div>
+                    <div>
+                        <img class="slide-image img-fluid" src="assets/images/marvel6.jpg">
+                    </div>
+                    <div>
+                        <img class="slide-image img-fluid" src="assets/images/marvel8.jpg">
+                    </div>
+                </div>
             </div>
             <br>
-          
+
             <!--place for the data to show-->
             <div class="col-12 col-md-6">
-                    <div class="hide">
-                <div>
-                   <div id="data-display"></div> 
+                <div class="hide">
+                    <div>
+                        <div id="data-display"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Video to show from the youtube-->
+            <div class="col-12 col-md-6">
+                <div class="hide ">
+                    <div id="video-display"></div>
                 </div>
             </div>
         </div>
-          
-            <!--Video to show from the youtube-->
-            <div class="col-12 col-md-6">
-                    <div class="hide ">
-                        <div id="video-display"></div> 
-            </div>
-        </div>
-    </div>
-<!--end of show data and videos-->
+        <!--end of show data and videos-->
         <br>
-      <div class="hide">
+
         <!--2nd row for the table of ranking-->
         <div class="row">
             <div class="col-md-12">
-                <div id="chart-container"></div>
-                <div class="card mb-4">
+                <div id="chart-container">
+                    <div class="card mb-4">
 
-                    <div class="card-header">Search Rankings</div>
+                        <div class="card-header">Search Rankings</div>
 
-                    <div class="card-body">
-                        <!--Start the table tag to show the ranking-->
-                        <table class="table table-sm table-hover" id='data-table'>
+                        <div class="card-body">
+                            <!--Start the table tag to show the ranking-->
+                            <table class="table table-sm table-hover" id='data-table'>
 
-                            <!--Start setting the table's header-->
-                            <thead>
-                                <!--iterms to include in the header -->
-                                <tr>
-                                    <th scope="col">Rank</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col"># of Times Searched</th>
-                                </tr>
-                            </thead>
+                                <!--Start setting the table's header-->
+                                <thead>
+                                    <!--iterms to include in the header -->
+                                    <tr>
+                                        <th scope="col">Rank</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col"># of Times Searched</th>
+                                    </tr>
+                                </thead>
 
-                            <!--Start of the real input for the table body-->
-                            <tbody>
-                            </tbody>
-                        </table>
+                                <!--Start of the real input for the table body-->
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-
             </div>
-
+            <!--End of the ranking-->
         </div>
-        <!--End of the ranking-->
-    </div>
+
         <!--row for the footer-->
         <div class="row">
             <footer class="col-12">
@@ -152,43 +153,13 @@
         </div>
     </div>
     <!--end of the container-->
-   
-     <!-- connection for the button in the javascript to hide the card of the table -->
-  
+
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
 
     <!--Link to JavaScript-->
     <script src="assets/javascript/app.js"></script>
 
- <script>
-
-//new  code made to put into the javascript
-/*    the #switch id is for the button to switch the table and graph
-the  .card is the entire class of the table
-the  #chart-container is the id for show the graph
- var toHide=false;
-        $("#switch").on("cilick",function(){
-            if(!toHide){
-            $(".card").hide();
-            toHide=true;
-            }
-            else{
-                $("#chart-container").hide();
-                $(".card").show();
-            }
-        })
-*/ $("#slideshow > div:gt(0)").hide();
-setInterval(function() {
-  $('#slideshow > div:first')
-    .fadeOut(1)
-    .next()
-    .fadeIn(1000)
-    .end()
-    .appendTo('#slideshow');
-}, 3000)
-
- </script>
 </body>
 
 </html>

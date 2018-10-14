@@ -1,20 +1,20 @@
 //some javaScript for id connection
-  // Initialize Firebase
-  var config = {
+// Initialize Firebase
+var config = {
     apiKey: "AIzaSyBllgVRpgVUZNsKzeut0B9HWx0BCjvAvew",
     authDomain: "green-project-one.firebaseapp.com",
     databaseURL: "https://green-project-one.firebaseio.com",
     projectId: "green-project-one",
     storageBucket: "green-project-one.appspot.com",
     messagingSenderId: "14534397184"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
-  var database = firebase.database()
+var database = firebase.database()
 
 var queryURL
 
-var video = function(){
+var video = function () {
 
     var ytsettings = {
         "async": true,
@@ -26,7 +26,7 @@ var video = function(){
             "Postman-Token": "8a23a9ae-9f3f-4dbd-b2b4-94a85af2f577"
         }
     }
-        
+
     $.ajax(ytsettings).done(function (response) {
         console.log(response);
 
@@ -38,29 +38,29 @@ var video = function(){
 
 }
 
-$("#add-input").on("click", function(event){
+$("#add-input").on("click", function (event) {
     event.preventDefault()
-    $("#slideshow").remove()//remove the slide show
-    $(".hide").show()// show the data , video, and graph
+    $("#slideshow").remove() //remove the slide show
+    $(".hide").show() // show the data , video, and graph
     $("#data-display").empty()
     $("#video-display").empty()
     var hero = $("#Search-input").val().trim().toLowerCase()
     $("#Search-input").val("")
     var marvelURL = "https://cors-anywhere.herokuapp.com/https://gateway.marvel.com/v1/public/characters?name=" + hero + "&ts=1&apikey=" + marvelAPIkey + "&hash=" + marvelAPIhash
-    queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=Variant%20Comics%20" + hero + "&key=" + youtubeAPIkey + "&order=relevance&safesearch=moderate&type=video" 
-    
+    queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=Variant%20Comics%20" + hero + "&key=" + youtubeAPIkey + "&order=relevance&safesearch=moderate&type=video"
+
     var msettings = {
         "async": true,
         "crossDomain": true,
         "url": marvelURL,
         "method": "GET",
         "headers": {
-          "Cache-Control": "no-cache",
-          "Postman-Token": "eacbc1d0-a627-4da7-98c6-f528bd54bb87"
+            "Cache-Control": "no-cache",
+            "Postman-Token": "eacbc1d0-a627-4da7-98c6-f528bd54bb87"
         }
-      }
-      
-      $.ajax(msettings).done(function (response) {
+    }
+
+    $.ajax(msettings).done(function (response) {
         console.log(response);
         if (response.data.count === 1) {
             video()
@@ -73,9 +73,9 @@ $("#add-input").on("click", function(event){
             for (var i = 0; i < series.length; i++) {
                 $("<li>" + series[i].name + "</li>").appendTo("#series")
             }
-            database.ref().once("value", function(snapshot){
-                for (var key in snapshot.val()){
-                    if (snapshot.val()[key].hero === response.data.results[0].name){
+            database.ref().once("value", function (snapshot) {
+                for (var key in snapshot.val()) {
+                    if (snapshot.val()[key].hero === response.data.results[0].name) {
                         database.ref(key).update({
                             searchNumber: (snapshot.val()[key].searchNumber + 1)
                         })
@@ -86,43 +86,42 @@ $("#add-input").on("click", function(event){
                     hero: response.data.results[0].name,
                     searchNumber: 1
                 })
-            })    
+            })
         } else {
             $("#data-display").append("<p>Character not found.</p>")
         }
-        
-      });
+
+    });
 })
 
-database.ref().on("value", function(){
-    database.ref().once("value", function(snapshot){
+database.ref().on("value", function () {
+    database.ref().once("value", function (snapshot) {
         $("tbody").empty()
         var rank = 1
         var rankingsArray = [];
         var snap = snapshot.val()
         while (rankingsArray.length < Object.keys(snap).length) {
-           var tempNum = 0;
-           var tempKey;
-           for(var key in snap) {
-               if (snap[key].searchNumber > tempNum && rankingsArray.indexOf(snap[key]) === -1) {
-                   tempNum = snap[key].searchNumber;
-                   tempKey = key;
-               }
-           }
-           rankingsArray.push(snap[tempKey]);
-           $('tbody').append('<tr><td>' + (rank++) + '</td><td>' + snap[tempKey].hero + '</td><td>' + snap[tempKey].searchNumber + '</td></tr>')
+            var tempNum = 0;
+            var tempKey;
+            for (var key in snap) {
+                if (snap[key].searchNumber > tempNum && rankingsArray.indexOf(snap[key]) === -1) {
+                    tempNum = snap[key].searchNumber;
+                    tempKey = key;
+                }
+            }
+            rankingsArray.push(snap[tempKey]);
+            $('tbody').append('<tr><td>' + (rank++) + '</td><td>' + snap[tempKey].hero + '</td><td>' + snap[tempKey].searchNumber + '</td></tr>')
         }
     })
 })
 
 //Here is the javascript for the slides 
-/*$("#slideshow > div:gt(0)").hide();
-setInterval(function() {
-  $('#slideshow > div:first')
-    .fadeOut(1000)
-    .next()
-    .fadeIn(1000)
-    .end()
-    .appendTo('#slideshow');
-}, 3000);*/
-
+$("#slideshow > div:gt(0)").hide();
+setInterval(function () {
+    $('#slideshow > div:first')
+        .fadeOut(1)
+        .next()
+        .fadeIn(1000)
+        .end()
+        .appendTo('#slideshow');
+}, 3000)
