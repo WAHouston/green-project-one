@@ -48,9 +48,9 @@
               </css-doodle>
     <div class="container" id="wrapper">
         <!--Jumbotron-->
-        <div class="jumbotron" style="background-color:yellow; color: white">
-            <h1 class="text-center">I am the Title</h1>
-            <h3 class="text-center">I am the sub-description</h3>
+        <div class="jumbotron" style="background-color:yellow; color: red">
+            <h1 class="text-center">Marvel Character Search</h1>
+            <h3 class="text-center">Your Gateway to the Marvel Multiverse</h3>
         </div>
 
         <!--start of row for the search, videos and data display-->
@@ -94,7 +94,7 @@
             <div class="col-12 col-md-6">
                     <div class="hide">
                 <div>
-                   <div id="data-display">I am the region for show the result data from Marvel API</div> 
+                   <div id="data-display"></div> 
                 </div>
             </div>
         </div>
@@ -102,7 +102,7 @@
             <!--Video to show from the youtube-->
             <div class="col-12 col-md-6">
                     <div class="hide ">
-                        <div id="video-display">I am the video from the youtube API</div> 
+                        <div id="video-display"></div> 
             </div>
         </div>
     </div>
@@ -112,10 +112,10 @@
         <!--2nd row for the table of ranking-->
         <div class="row">
             <div class="col-md-12">
-                <div id="chart-container">I am the here to display the bar garph while button with id switch was click</div>
+                <div id="chart-container"></div>
                 <div class="card mb-4">
 
-                    <div class="card-header">The Ranking of what is most searched</div>
+                    <div class="card-header">Search Rankings</div>
 
                     <div class="card-body">
                         <!--Start the table tag to show the ranking-->
@@ -125,9 +125,9 @@
                             <thead>
                                 <!--iterms to include in the header -->
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">Rank</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">optional for numbers of searched</th>
+                                    <th scope="col"># of Times Searched</th>
                                 </tr>
                             </thead>
 
@@ -137,7 +137,7 @@
                         </table>
                     </div>
                 </div>
-                <button id="switch" type="button" class="btn btn-info text-center">Click me to show the graph and hide the table</button>
+
             </div>
 
         </div>
